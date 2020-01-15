@@ -273,6 +273,38 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
             mFodGestureEnable = TunerService.parseIntegerSwitch(newValue, false);
         } else {
             mDozeEnabled = TunerService.parseIntegerSwitch(newValue, true);
+	}
+
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        if (mIsCircleShowing) {
+            if (getFODPressedState() == 0) {
+                //canvas.drawCircle(mSize / 2, mSize / 2, mSize / 2.0f, mPaintFingerprint);
+                setImageResource(R.drawable.fod_icon_pressed);
+            } else if (getFODPressedState() == 1) {
+                //canvas.drawCircle(mSize / 2, mSize / 2, mSize / 2.0f, mPaintFingerprint);
+                setImageResource(R.drawable.fod_icon_pressed_white);
+            } else if (getFODPressedState() == 2) {
+                canvas.drawCircle(mSize / 2, mSize / 2, mSize / 2.0f, mPaintFingerprint);
+            }
+        }
+    }
+
+    private int getFODPressedState() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FOD_PRESSED_STATE, 0);
+    }
+
+    private void setFODPressedState() {
+        int fodpressed = getFODPressedState();
+
+        if (fodpressed == 0) {
+            setImageResource(R.drawable.fod_icon_pressed);
+        } else if (fodpressed == 1) {
+            setImageResource(R.drawable.fod_icon_pressed_white);
+        } else if (fodpressed == 2) {
+            setImageDrawable(null);
         }
     }
 
@@ -370,7 +402,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         setDim(true);
         dispatchPress();
 
-        setImageDrawable(null);
+        setFODPressedState();
         invalidate();
     }
 
