@@ -5907,6 +5907,8 @@ public final class Settings {
          * @hide
          */
         public static final String FOD_ANIM = "fod_anim";
+        private static final Validator FOD_ANIM_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 17);
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
