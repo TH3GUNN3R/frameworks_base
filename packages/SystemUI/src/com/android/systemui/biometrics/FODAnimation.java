@@ -35,7 +35,6 @@ public class FODAnimation extends ImageView {
     private boolean mShowing = false;
     private Context mContext;
     private int mAnimationSize;
-    private int mAnimationOffset;
     private int mAnimationPositionY;
     private AnimationDrawable recognizingAnim;
     private WindowManager mWindowManager;
@@ -43,11 +42,23 @@ public class FODAnimation extends ImageView {
 
     private int mSelectedAnim;
     private final int[] ANIMATION_STYLES = {
+        R.drawable.fod_miui_normal_recognizing_anim,
+        R.drawable.fod_miui_aod_recognizing_anim,
         R.drawable.fod_miui_light_recognizing_anim,
+        R.drawable.fod_miui_pop_recognizing_anim,
+        R.drawable.fod_miui_pulse_recognizing_anim,
+        R.drawable.fod_miui_pulse_recognizing_white_anim,
+        R.drawable.fod_miui_rhythm_recognizing_anim,
+        R.drawable.fod_op_cosmos_recognizing_anim,
+        R.drawable.fod_op_mclaren_recognizing_anim,
         R.drawable.fod_op_stripe_recognizing_anim,
+        R.drawable.fod_op_wave_recognizing_anim,
+        R.drawable.fod_pureview_dna_recognizing_anim,
         R.drawable.fod_pureview_future_recognizing_anim,
+        R.drawable.fod_pureview_halo_ring_recognizing_anim,
         R.drawable.fod_pureview_molecular_recognizing_anim,
         R.drawable.fod_blue_firework_recognizing_anim,
+        R.drawable.fod_coloros7_1_recognizing_anim,
         R.drawable.fod_coloros7_2_recognizing_anim
     };
 
@@ -58,7 +69,6 @@ public class FODAnimation extends ImageView {
         mWindowManager = mContext.getSystemService(WindowManager.class);
 
         mAnimationSize = mContext.getResources().getDimensionPixelSize(R.dimen.fod_animation_size);
-        mAnimationOffset = mContext.getResources().getDimensionPixelSize(R.dimen.fod_animation_offset);
         mAnimParams.height = mAnimationSize;
         mAnimParams.width = mAnimationSize;
 
@@ -67,7 +77,7 @@ public class FODAnimation extends ImageView {
         mAnimParams.flags =  WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mAnimParams.gravity = Gravity.TOP | Gravity.CENTER;
-        mAnimParams.y = mPositionY - (mAnimationSize / 2) + mAnimationOffset;
+        mAnimParams.y = mPositionY - (mAnimationSize / 2);
 
         setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         update();
@@ -82,7 +92,7 @@ public class FODAnimation extends ImageView {
     }
 
     public void updateParams(int mDreamingOffsetY) {
-        mAnimParams.y = mDreamingOffsetY - (mAnimationSize / 2) + mAnimationOffset;
+        mAnimParams.y = mDreamingOffsetY - (mAnimationSize / 2);
     }
 
     public void setAnimationKeyguard(boolean state) {
