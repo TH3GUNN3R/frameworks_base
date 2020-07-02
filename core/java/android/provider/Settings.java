@@ -5592,7 +5592,13 @@ public final class Settings {
 
         /** @hide */
         private static final Validator FOD_PRESSED_STATE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 7);
+
+        /**
+         * FOD recognizing animation
+         * @hide
+         */
+        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
 
         /** @hide */
         private static final Validator FOD_RECOGNIZING_ANIMATION_VALIDATOR =
