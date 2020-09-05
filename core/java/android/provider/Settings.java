@@ -5577,40 +5577,18 @@ public final class Settings {
         /** @hide */
         public static final Validator POCKET_JUDGE_VALIDATOR = BOOLEAN_VALIDATOR;
 
-        /**
-         * FOD icon picker
-         * @hide
-         */
-        public static final String FOD_ICON = "fod_icon";
-
         /** @hide */
         private static final Validator FOD_ICON_VALIDATOR = ANY_STRING_VALIDATOR;
 
-        /**
-         * FOD pressed state
-         * @hide
-         */
-        public static final String FOD_PRESSED_STATE = "fod_pressed_state";
 
         /** @hide */
         private static final Validator FOD_PRESSED_STATE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 6);
-
-        /**
-         * FOD recognizing animation
-         * @hide
-         */
-        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
 
         /** @hide */
         private static final Validator FOD_RECOGNIZING_ANIMATION_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
-        /**
-         * FOD recognizing animation picker
-         * @hide
-         */
-        public static final String FOD_ANIM = "fod_anim";
 
         /** @hide */
         private static final Validator FOD_ANIM_VALIDATOR =
