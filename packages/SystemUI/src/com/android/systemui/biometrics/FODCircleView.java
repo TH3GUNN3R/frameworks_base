@@ -128,7 +128,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         R.drawable.fod_icon_pressed_vivo_green,
         R.drawable.fod_icon_pressed_vivo_yellow_shadow
     };
-    private int mDefaultPressedIcon;
 
     private IFingerprintInscreenCallback mFingerprintInscreenCallback =
             new IFingerprintInscreenCallback.Stub() {
@@ -296,8 +295,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
 
         mLockPatternUtils = new LockPatternUtils(mContext);
 
-        mDefaultPressedIcon = res.getInteger(com.android.internal.R.
-             integer.config_pressed_fod_icon);
         mUpdateMonitor = KeyguardUpdateMonitor.getInstance(context);
         mUpdateMonitor.registerCallback(mMonitorCallback);
 
@@ -478,7 +475,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         mSelectedIcon = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.FOD_ICON, 0);
         mPressedIcon = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.FOD_PRESSED_STATE, mDefaultPressedIcon);
+                Settings.System.FOD_PRESSED_STATE, 0);
         if (mFODAnimation != null) {
             mFODAnimation.update();
         }
