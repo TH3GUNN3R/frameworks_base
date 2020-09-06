@@ -5590,10 +5590,6 @@ public final class Settings {
         private static final Validator FOD_ICON_VALIDATOR = ANY_STRING_VALIDATOR;
 
 
-        /** @hide */
-        private static final Validator FOD_PRESSED_STATE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 7);
-
         /**
          * FOD recognizing animation
          * @hide
@@ -5604,10 +5600,14 @@ public final class Settings {
         private static final Validator FOD_RECOGNIZING_ANIMATION_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
-
-        /** @hide */
+        /**
+         * FOD recognizing animation picker
+         * @hide
+         */
+        public static final String FOD_ANIM = "fod_anim";
         private static final Validator FOD_ANIM_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 5);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 17);
+
 
         /**
          * Whether to show heads up only for dialer and sms apps
@@ -5683,9 +5683,6 @@ public final class Settings {
         private static final Validator HEADSET_CONNECT_PLAYER_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
-	/** @hide */
-        private static final Validator FOD_PRESSED_STATE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 6);
 
         /**
          * @hide
@@ -5905,19 +5902,9 @@ public final class Settings {
          */
         public static final String FOD_PRESSED_STATE = "fod_pressed_state";
 
-        /**
-         * FOD recognizing animation
-         * @hide
-         */
-        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
-
-        /**
-         * FOD recognizing animation picker
-         * @hide
-         */
-        public static final String FOD_ANIM = "fod_anim";
-        private static final Validator FOD_ANIM_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 17);
+	/** @hide */
+        private static final Validator FOD_PRESSED_STATE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 7);
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

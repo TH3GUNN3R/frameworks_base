@@ -52,8 +52,6 @@ import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.tuner.TunerService;
 
-import lineageos.providers.LineageSettings;
-
 import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreen;
 import vendor.lineage.biometrics.fingerprint.inscreen.V1_0.IFingerprintInscreenCallback;
 
@@ -86,6 +84,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
     private int mColorBackground;
 
     private boolean mIsBouncer;
+    private boolean mIsKeyguard;
     private boolean mIsDreaming;
     private boolean mIsCircleShowing;
 
@@ -318,6 +317,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         } else {
             mDozeEnabled = TunerService.parseIntegerSwitch(newValue, true);
 	}
+    }
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -325,14 +325,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable {
         if (mIsCircleShowing) {
             setImageResource(PRESSED_STYLES[mPressedIcon]);
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        if (!mIsCircleShowing) {
-            canvas.drawCircle(mSize / 2, mSize / 2, mSize / 2.0f, mPaintFingerprintBackground);
-        }
-        super.onDraw(canvas);
     }
 
     @Override
